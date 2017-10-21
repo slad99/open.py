@@ -16,17 +16,21 @@ zipview = "file-roller"
 # supported file types
 files = (
  (browser, ('htm', 'html')),
- (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'bmp', 'svg')),
- (pdfview, ('pdf')),
- (soundview, ('wav', 'au', 'flac', 'mp3', 'm4a')),
- (videoview, ('mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm')),
- (editor, ('txt', 'py', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
- (zipview, ('zip', 'tar', 'tgz', 'gz', 'bz2', 'lha', 'rar')),
+ (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'tiff', 'tga', 'bmp', 'svg', 'xpm', 'xbm', 'ico')),
+ (pdfview, ('pdf', 'dvi', 'eps', 'ps')),
+ (soundview, ('wav', 'au', 'flac', 'mp3', 'm4a', 'ra')),
+ (videoview, ('avi', 'mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm', 'rm', 'ram')),
+ (editor, ('txt', 'py', 'pl', 'php', 'rb', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
+ (zipview, ('zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'rar')),
  ('kompare', ('diff', 'patch')),
  ('timidity', ('mid')),
  ('xmp', ('mod', 'xm')),
  ('sidplayfp', ('sid')),
  ('blender', ('blend')),
+ ('gm display', ('iff', 'ilbm')),
+ ('openscad', ('scad')),
+ ('freecad', ('stl')),
+ ('retext', ('md', 'markdown')),
 )
 
 cmd = ''
