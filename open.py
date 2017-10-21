@@ -41,20 +41,21 @@ if len(sys.argv) < 2:
 	os.system(cmd)
 	sys.exit(0)
 
-ext = sys.argv[1].split('.')[-1].lower()
+arg = ' '.join(sys.argv[1:])
+
+ext = arg.split('.')[-1].lower()
 
 for x, y in files:
 	if ext in y:
-		cmd = '%s "%s"' % (x, sys.argv[1])
+		cmd = '%s "%s"' % (x, arg)
 
 # open in web browser
-if ('http:' in sys.argv[1] or 'https:' in sys.argv[1] or
-		'ftp:' in sys.argv[1] or 'www.' in sys.argv[1]):
-	cmd = '%s "%s"' % (browser, sys.argv[1])
+if ('http:' in arg or 'https:' in arg or 'ftp:' in arg or 'www.' in arg):
+	cmd = '%s "%s"' % (browser, arg)
 
 # open in editor if nothing else is found
 if not cmd:
-	cmd = '%s "%s"' % (editor, sys.argv[1])
+	cmd = '%s "%s"' % (editor, arg)
 
 os.system(cmd)
 
