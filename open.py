@@ -13,18 +13,25 @@ videoview = "vlc"
 editor = "gedit"
 zipview = "file-roller"
 
+# supported file types
 files = (
  (browser, ('htm', 'html')),
- (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'bmp')),
+ (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'bmp', 'svg')),
  (pdfview, ('pdf')),
  (soundview, ('wav', 'au', 'flac', 'mp3', 'm4a')),
- (videoview, ('mp4', 'flv', 'mov', 'mkv', 'm4v')),
- (editor, ('txt', 'py', 'sh', 'cfg')),
+ (videoview, ('mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm')),
+ (editor, ('txt', 'py', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
  (zipview, ('zip', 'tar', 'tgz', 'gz', 'bz2', 'lha', 'rar')),
+ ('kompare', ('diff', 'patch')),
+ ('timidity', ('mid')),
+ ('xmp', ('mod', 'xm')),
+ ('sidplayfp', ('sid')),
+ ('blender', ('blend')),
 )
 
 cmd = ''
 
+# open current folder in file manager if no argument is supplied
 if len(sys.argv) < 2:
 	cmd = fileman + ' .'
 	os.system(cmd)
@@ -36,11 +43,15 @@ for x, y in files:
 	if ext in y:
 		cmd = '%s "%s"' % (x, sys.argv[1])
 
+# open in web browser
 if ('http:' in sys.argv[1] or 'https:' in sys.argv[1] or
 		'ftp:' in sys.argv[1] or 'www.' in sys.argv[1]):
 	cmd = '%s "%s"' % (browser, sys.argv[1])
 
-if cmd:
-	os.system(cmd)
+# open in editor if nothing else is found
+if not cmd:
+	cmd = '%s "%s"' % (editor, sys.argv[1])
+
+os.system(cmd)
 
 
