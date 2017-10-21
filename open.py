@@ -6,7 +6,7 @@ import os, sys
 
 fileman = "nautilus"
 browser = "chromium"
-imgview = "gwenview"
+imgview = "eog"
 pdfview = "evince"
 soundview = "vlc"
 videoview = "vlc"
@@ -41,7 +41,6 @@ if ('http:' in sys.argv[1] or 'https:' in sys.argv[1] or
 	cmd = '%s "%s"' % (browser, sys.argv[1])
 
 if cmd:
-	print(cmd)
 	os.system(cmd)
 
 
