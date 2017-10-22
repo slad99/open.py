@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
-"""A simple Python replacement for xdg-open"""
+"""
+	A simple Python replacement for xdg-open
+
+	It is suggested to create a symlink to this script with
+	a shorter name, e.g. with "ln -s open.py o", for faster typing.
+"""
 
 import os, sys
 
@@ -25,7 +30,7 @@ files = (
  (pdfview, ('pdf', 'dvi', 'eps', 'epsi', 'ps')),
  (soundview, ('wav', 'au', 'flac', 'mp2', 'mp3', 'm4a', 'ra', 'ogg', 'aiff')),
  (videoview, ('avi', 'mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm', 'rm', 'ram', 'ogv', 'vob', 'wmv')),
- ('mplayer', ('mpg', 'mpeg')),
+ ('mplayer', ('mpg', 'mpeg', 'fli')),
  (editor, ('txt', 'py', 'pl', 'php', 'rb', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
  (zipview, ('zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'lzh', 'rar')),
  ('kompare', ('diff', 'patch')),
@@ -38,7 +43,7 @@ files = (
  ('freecad', ('stl',)),
  ('retext', ('md', 'markdown')),
  ('gnome-font-viewer', ('otf', 'ttf')),
- ('ghex', ('bin', 'raw', 'dat', 'out', 'exe', 'dsk', 'adf', 'dll', 'lib')),
+ ('ghex', ('bin', 'raw', 'dat', 'out', 'com', 'exe', 'dsk', 'adf', 'dll', 'a', 'lib', 'dylib')),
  ('lyx', ('lyx',)),
  ('xboard -lgf', ('pgn',)),
  ('gimp', ('xcf', 'psd', 'jp2')),
@@ -50,6 +55,7 @@ files = (
  ('srview', ('srv',)),
  ('dia', ('dia',)),
  ('inkscape', ('ai', 'wmf', 'dxf')),
+ ('man', ('0', '1', '2', '3', '4', '5', '6', '7', '8')),
 )
 
 cmd = ''
