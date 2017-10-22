@@ -68,8 +68,14 @@ for x, y in files:
 	if ext in y:
 		cmd = '%s "%s"' % (x, arg)
 
+def isurl(x):
+	for n in 'http:', 'https:', 'ftp:', 'www.':
+		if x[:len(n)] == n:
+			return True
+	return False
+
 # open in web browser
-if ('http:' in arg or 'https:' in arg or 'ftp:' in arg or 'www.' in arg):
+if isurl(arg):
 	cmd = '%s "%s"' % (browser, arg)
 
 # open in editor if nothing else is found
