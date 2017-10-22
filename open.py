@@ -17,6 +17,7 @@ pdfview = "evince"
 soundview = "vlc"
 videoview = "vlc"
 editor = "gedit"
+hexeditor = "ghex"
 zipview = "file-roller"
 
 # Supported file types list
@@ -31,7 +32,7 @@ files = (
  (pdfview, ('pdf', 'dvi', 'eps', 'epsi', 'ps')),
  (soundview, ('wav', 'au', 'flac', 'mp2', 'mp3', 'm4a', 'ra', 'ogg', 'aiff')),
  (videoview, ('avi', 'mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm', 'rm', 'ram', 'ogv', 'vob', 'wmv')),
- ('mplayer', ('mpg', 'mpeg', 'fli')),
+ ('mplayer', ('mpg', 'mpeg', 'mpe', 'fli')),
  (editor, ('txt', 'py', 'pl', 'php', 'rb', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
  (zipview, ('zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'lzh', 'rar')),
  ('kompare', ('diff', 'patch')),
@@ -39,16 +40,16 @@ files = (
  ('xmp', ('mod', 'xm', 's3m', 'med')),
  ('sidplayfp', ('sid',)),
  ('blender', ('blend',)),
- ('display', ('iff', 'ilbm', 'rgb')),
+ ('display', ('iff', 'ilbm', 'lbm', 'rgb')),
  ('openscad', ('scad',)),
  ('freecad', ('stl',)),
  ('retext', ('md', 'markdown')),
  ('gnome-font-viewer', ('otf', 'ttf')),
- ('ghex', ('bin', 'raw', 'dat', 'out', 'com', 'exe', 'dsk', 'adf', 'dll', 'a', 'lib', 'dylib')),
+ (hexeditor, ('bin', 'raw', 'dat', 'com', 'exe', 'dsk', 'adf', 'dll', 'a', 'lib', 'dylib')),
  ('lyx', ('lyx',)),
  ('xboard -lgf', ('pgn',)),
  ('gimp', ('xcf', 'psd', 'jp2')),
- ('libreoffice --writer', ('doc', 'docx', 'odt')),
+ ('libreoffice --writer', ('doc', 'docx', 'odt', 'wri')),
  ('libreoffice --impress', ('ppt', 'pptx', 'odp')),
  ('libreoffice --calc', ('xls', 'xlsx', 'ods')),
  ('poedit', ('po',)),
@@ -85,9 +86,15 @@ def isurl(x):
 if isurl(arg):
 	cmd = '%s "%s"' % (browser, arg)
 
-# open in editor if nothing else is found
+# open in text or hex editor if nothing else is found
 if not cmd:
-	cmd = '%s "%s"' % (editor, arg)
+	# https://stackoverflow.com/questions/898669/how-can-i-detect-if-a-file-is-binary-non-text-in-python
+	textchars = bytearray({7,8,9,10,12,13,27} | set(range(0x20, 0x100)) - {0x7f})
+	is_binary_string = lambda bytes: bool(bytes.translate(None, textchars))
+	if is_binary_string(open(arg, 'rb').read(1024)):
+		cmd = '%s "%s"' % (hexeditor, arg)
+	else:
+		cmd = '%s "%s"' % (editor, arg)
 
 os.system(cmd)
 
