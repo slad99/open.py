@@ -14,23 +14,42 @@ editor = "gedit"
 zipview = "file-roller"
 
 # supported file types
+#  Add trailing comma is there is only a single file extension!
+
+# get file type stats for directory:
+# find dir/  -type f -and -printf "%f\n" | egrep -io '\.[^.]*$' | sort | uniq -c | sort -rn
+
 files = (
  (browser, ('htm', 'html')),
- (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'tiff', 'tga', 'bmp', 'svg', 'xpm', 'xbm', 'ico')),
- (pdfview, ('pdf', 'dvi', 'eps', 'ps')),
- (soundview, ('wav', 'au', 'flac', 'mp3', 'm4a', 'ra')),
- (videoview, ('avi', 'mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm', 'rm', 'ram')),
+ (imgview, ('png', 'gif', 'jpg', 'jpeg', 'tif', 'tiff', 'tga', 'bmp', 'svg', 'ppm', 'xpm', 'xbm', 'ico')),
+ (pdfview, ('pdf', 'dvi', 'eps', 'epsi', 'ps')),
+ (soundview, ('wav', 'au', 'flac', 'mp2', 'mp3', 'm4a', 'ra', 'ogg', 'aiff')),
+ (videoview, ('avi', 'mp4', 'flv', 'mov', 'mkv', 'm4v', 'webm', 'rm', 'ram', 'ogv', 'vob', 'wmv')),
+ ('mplayer', ('mpg', 'mpeg')),
  (editor, ('txt', 'py', 'pl', 'php', 'rb', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h')),
- (zipview, ('zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'rar')),
+ (zipview, ('zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'lzh', 'rar')),
  ('kompare', ('diff', 'patch')),
- ('timidity', ('mid')),
- ('xmp', ('mod', 'xm')),
- ('sidplayfp', ('sid')),
- ('blender', ('blend')),
- ('gm display', ('iff', 'ilbm')),
- ('openscad', ('scad')),
- ('freecad', ('stl')),
+ ('timidity', ('mid',)),
+ ('xmp', ('mod', 'xm', 's3m', 'med')),
+ ('sidplayfp', ('sid',)),
+ ('blender', ('blend',)),
+ ('display', ('iff', 'ilbm', 'rgb')),
+ ('openscad', ('scad',)),
+ ('freecad', ('stl',)),
  ('retext', ('md', 'markdown')),
+ ('gnome-font-viewer', ('otf', 'ttf')),
+ ('ghex', ('bin', 'raw', 'dat', 'out', 'exe', 'dsk', 'adf', 'dll', 'lib')),
+ ('lyx', ('lyx',)),
+ ('xboard -lgf', ('pgn',)),
+ ('gimp', ('xcf', 'psd', 'jp2')),
+ ('libreoffice --writer', ('doc', 'docx', 'odt')),
+ ('libreoffice --impress', ('ppt', 'pptx', 'odp')),
+ ('libreoffice --calc', ('xls', 'xlsx', 'ods')),
+ ('poedit', ('po',)),
+ ('ncview', ('nc',)),
+ ('srview', ('srv',)),
+ ('dia', ('dia',)),
+ ('inkscape', ('ai', 'wmf', 'dxf')),
 )
 
 cmd = ''
