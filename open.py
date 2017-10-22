@@ -9,6 +9,7 @@
 
 import os, sys
 
+# Some default applications
 fileman = "nautilus"
 browser = "chromium"
 imgview = "eog"
@@ -18,11 +19,11 @@ videoview = "vlc"
 editor = "gedit"
 zipview = "file-roller"
 
-# supported file types
-#  Add trailing comma is there is only a single file extension!
+# Supported file types list
+#  Add trailing comma if there is only a single file extension!
 
-# get file type stats for directory:
-# find dir/  -type f -and -printf "%f\n" | egrep -io '\.[^.]*$' | sort | uniq -c | sort -rn
+#    get file type stats for directory:
+#      find dir/  -type f -and -printf "%f\n" | egrep -io '\.[^.]*$' | sort | uniq -c | sort -rn
 
 files = (
  (browser, ('htm', 'html')),
