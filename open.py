@@ -70,6 +70,12 @@ if len(sys.argv) < 2:
 
 arg = ' '.join(sys.argv[1:])
 
+# open directory in file manager
+if os.path.isdir(arg):
+	cmd = '%s "%s"' % (fileman, arg)
+	os.system(cmd)
+	sys.exit(0)
+
 ext = arg.split('.')[-1].lower()
 
 for x, y in files:
