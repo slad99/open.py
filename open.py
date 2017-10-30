@@ -60,7 +60,6 @@ files = (
  ('xfig', {'fig'}),
  ('gnuplot', {'gnuplot'}),
  ('inkscape', {'ai', 'wmf', 'dxf'}),
- ('man', {'0', '1', '2', '3', '4', '5', '6', '7', '8'}),
 )
 
 cmd = ''
@@ -98,7 +97,7 @@ if isurl(arg):
 # open in text or hex editor if nothing else is found
 if not cmd:
 	# https://stackoverflow.com/questions/898669/how-can-i-detect-if-a-file-is-binary-non-text-in-python
-	textchars = bytearray({7,8,9,10,12,13,27} | set(range(0x20, 0x100)) - {0x7f})
+	textchars = bytearray({7,8,9,10,12,13,27,31} | set(range(0x20, 0x100)) - {0x7f})
 	is_binary_string = lambda bytes: bool(bytes.translate(None, textchars))
 	if is_binary_string(open(arg, 'rb').read(1024)):
 		cmd = '%s "%s"' % (hexeditor, arg)
