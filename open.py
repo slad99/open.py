@@ -34,7 +34,7 @@ files = (
  ('mplayer', {'mpg', 'mpeg', 'mpe', 'fli'}),
  ('mpv', {'mov'}),
  (editor, {'txt', 'py', 'pl', 'php', 'rb', 'sh', 'cfg', 'conf', 'c', 'cpp', 'h'}),
- (zipview, {'zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'lha', 'lzh', 'rar', 'exe', 'arj', '7z', 'cab', 'iso', 'rpm', 'deb', 'lz4', 'sit', 'zoo'}),
+ (zipview, {'zip', 'tar', 'tgz', 'gz', 'xz', 'bz2', 'egg', 'lha', 'lzh', 'rar', 'exe', 'arj', '7z', 'cab', 'iso', 'rpm', 'deb', 'lz4', 'sit', 'zoo'}),
  ('kompare', {'diff', 'patch'}),
  ('timidity', {'mid'}),
  ('xmp', {'mod', 'xm', 's3m', 'med'}),
@@ -55,11 +55,12 @@ files = (
  ('poedit', {'po'}),
  ('ncview', {'nc'}),
  ('srview', {'srv'}),
- ('metview -p', {'grb', 'grib', 'grib2'}),
+ ('zygrib', {'grb', 'grib', 'grib2'}),
  ('dia', {'dia'}),
  ('xfig', {'fig'}),
  ('gnuplot', {'gnuplot'}),
  ('inkscape', {'ai', 'wmf', 'dxf'}),
+ ('yed', {'graphml'}),
 )
 
 cmd = ''
